@@ -1,7 +1,33 @@
 import { Request, Response } from "express";
 
-export const test = (req: Request, res: Response) => {
-  return res.status(200).json({
-    message: "Successful",
-  });
+export const userRollsDice = (req: Request, res: Response) => {
+  try {
+  } catch (error) {}
+};
+
+export const getGeneralRanking = (req: Request, res: Response) => {
+  try {
+  } catch (error) {}
+};
+
+export const getBestPlayer = (req: Request, res: Response) => {
+  try {
+  } catch (error) {}
+};
+
+export const getWorstPlayer = (req: Request, res: Response) => {
+  try {
+  } catch (error) {}
+};
+
+export const getGames = (req: Request, res: Response) => {
+  try {
+    console.log("getting games");
+  } catch (error) {}
+};
+
+export const deleteGame = (req: Request, res: Response) => {
+  try {
+    console.log("getting games");
+  } catch (error) {}
 };

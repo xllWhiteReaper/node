@@ -27,22 +27,19 @@ const UserSchema = new Schema(
     },
     date: String,
     games: {
-      required: true,
-      type: {
-        total: {
-          type: Number,
-          default: 0,
-        },
-        won: {
-          type: Number,
-          default: 0,
-        },
-        winRate: {
-          type: Number,
-          default: 0,
-        },
-        history: [Object],
+      total: {
+        type: Number,
+        default: 0,
       },
+      won: {
+        type: Number,
+        default: 0,
+      },
+      winRate: {
+        type: Number,
+        default: 0,
+      },
+      history: [Object],
     },
   },
   { versionKey: false }

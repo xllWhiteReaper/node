@@ -1,11 +1,11 @@
 import { IGame } from "./igame.interface";
 
 export interface IUser {
-  _id: String;
-  firstName: String;
-  lastName: String;
-  email: String;
-  password: String;
-  date: String;
+  _id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  date: string;
   games: IGame;
 }

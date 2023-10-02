@@ -5,6 +5,7 @@ import configuration from "../config";
 import diceGameRouter from "../routes/dice-game.route";
 import error404Router from "../routes/error404.route";
 import testRouter from "../routes/test.route";
+import authRouter from "../routes/auth.route";
 
 import { connectDB } from "../db/config";
 
@@ -36,6 +37,7 @@ export default class Server {
   private useRoutes(): void {
     this.app.use(this.routes.games, diceGameRouter);
     this.app.use(this.routes.test, testRouter);
+    this.app.use(this.routes.auth, authRouter);
     this.app.use(this.routes.error404, error404Router);
   }
 

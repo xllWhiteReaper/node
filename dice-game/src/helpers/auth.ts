@@ -1,7 +1,7 @@
 import { User } from "../models/user.model";
 import { sign } from "jsonwebtoken";
 import config from "../config";
-import { WrongCredentialsException } from "../models/wrong-credentials-exception";
+import { WrongCredentialsException } from "../models/errors/wrong-credentials-exception";
 
 export class Auth {
   private firstName: string;

@@ -6,6 +6,7 @@ export const connectDB = async () => {
     await connect(config.mongoDBURI ?? "");
     console.log("Database connection successfully executed");
   } catch (error) {
+    console.log(error);
     console.log("Error in connecting database");
   }
 };

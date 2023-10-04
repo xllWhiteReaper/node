@@ -3,14 +3,14 @@ import {
   deleteUser,
   getAllUsers,
   getUserById,
-  updateUserName,
+  updateUser,
 } from "../controllers/user.controller";
 
 const router = Router();
 
 router.get("/", getAllUsers);
 router.get("/:id", getUserById);
-router.put("/update-username", updateUserName);
+router.put("/update/:id", updateUser);
 router.delete("/delete", deleteUser);
 
 export default router;

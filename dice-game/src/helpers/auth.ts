@@ -1,4 +1,4 @@
-import { User } from "../models/user.model";
+import { User } from "../schemas/user.schema";
 import { sign } from "jsonwebtoken";
 import config from "../config";
 import { WrongCredentialsException } from "../models/errors/wrong-credentials-exception";

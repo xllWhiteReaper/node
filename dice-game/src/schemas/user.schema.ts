@@ -1,7 +1,8 @@
-import { Model, Schema, model } from "mongoose";
+import { Model, Schema, model, Types } from "mongoose";
 import { IUser } from "../interfaces/iuser.interface";
 import { IUserModel } from "../interfaces/iuser.method.interface";
 import bcryptjs from "bcryptjs";
+import { GameSchema } from "./game.schema";
 
 const ENCRYPTING_CYCLES = 10;
 
@@ -26,21 +27,7 @@ const UserSchema = new Schema(
       required: [true, "Password is required"],
     },
     date: String,
-    games: {
-      total: {
-        type: Number,
-        default: 0,
-      },
-      won: {
-        type: Number,
-        default: 0,
-      },
-      winRate: {
-        type: Number,
-        default: 0,
-      },
-      history: [Object],
-    },
+    games: GameSchema,
   },
   { versionKey: false }
 );

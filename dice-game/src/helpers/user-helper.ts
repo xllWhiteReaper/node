@@ -1,7 +1,7 @@
 import { IUser } from "../interfaces/iuser.interface";
 import { NotFoundException } from "../models/errors/not-found-exception";
 import { UpdateUserPayload } from "../models/update-user-payload.interface";
-import { User } from "../models/user.model";
+import { User } from "../schemas/user.schema";
 
 export class UserHelper {
   constructor(private _id: String) {}
@@ -34,7 +34,9 @@ export class UserHelper {
     return await User.findByIdAndDelete({ _id: this._id });
   }
 
-  async updateUser(updateUserPayload: UpdateUserPayload) {
+  async updateUser(
+    updateUserPayload: UpdateUserPayload
+  ): Promise<IUser | null> {
     try {
       const updatedUser: IUser | null = await User.findOneAndUpdate(
         { _id: this._id },
@@ -46,7 +48,8 @@ export class UserHelper {
     }
   }
 
-  set id(id: string) {
+  id(id: string) {
     this._id = id;
+    return this;
   }
 }

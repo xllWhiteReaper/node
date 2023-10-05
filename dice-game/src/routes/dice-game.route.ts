@@ -8,7 +8,7 @@ import {
 } from "../controllers/dice-game.controller";
 
 const router = Router();
-router.post("/player/:id", userRollsDice);
+router.post("/roll-dice/:id", userRollsDice);
 router.get("/ranking", getGeneralRanking);
 router.get("/best-player", getBestPlayer);
 router.get("/worst-player", getWorstPlayer);

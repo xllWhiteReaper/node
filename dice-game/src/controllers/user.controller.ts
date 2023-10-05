@@ -25,8 +25,7 @@ export const getAllUsers = async (req: Request, res: Response) => {
 export const getUserById = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
-    userHelper.id = id;
-    const foundUser = await userHelper.getSingleUser();
+    const foundUser = await userHelper.id(id).getSingleUser();
     const successResponse: CustomResponse = {
       msg: `User found`,
       success: true,
@@ -49,8 +48,7 @@ export const updateUser = async (req: Request, res: Response) => {
       firstName,
       lastName,
     };
-    userHelper.id = id;
-    const updatedUser = await userHelper.updateUser(payload);
+    const updatedUser = await userHelper.id(id).updateUser(payload);
     let response = {};
     if (updatedUser) {
       response = {
@@ -69,7 +67,18 @@ export const updateUser = async (req: Request, res: Response) => {
   }
 };
 
-export const deleteUser = (req: Request, res: Response) => {
+export const deleteUser = async (req: Request, res: Response) => {
   try {
-  } catch (error) {}
+    const { email, password, id } = req.body;
+
+    if (!id) {
+      return handleError(new BadRequestException(), res);
+    }
+
+    await userHelper.id(id).deleteUser();
+
+    return res.status(204).json();
+  } catch (error) {
+    return handleError(error as Error, res);
+  }
 };

@@ -1,17 +1,17 @@
 import { Router } from "express";
 import {
   deleteGame,
-  getBestPlayer,
+  getBestPlayers,
   getGeneralRanking,
-  getWorstPlayer,
+  getWorstPlayers,
   userRollsDice,
 } from "../controllers/dice-game.controller";
 
 const router = Router();
 router.post("/roll-dice/:id", userRollsDice);
 router.get("/ranking", getGeneralRanking);
-router.get("/best-player", getBestPlayer);
-router.get("/worst-player", getWorstPlayer);
-router.delete("/delete/:id", deleteGame);
+router.get("/best-players", getBestPlayers);
+router.get("/worst-players", getWorstPlayers);
+router.delete("/delete-by-user-id/:id", deleteGame);
 
 export default router;

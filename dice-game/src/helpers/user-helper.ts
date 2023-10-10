@@ -12,7 +12,7 @@ export class UserHelper {
         id: user._id,
         firstName: user.firstName,
         lastName: user.lastName,
-        wonRate: user.games.won,
+        wonRate: user.games.winRate,
       };
     });
   }

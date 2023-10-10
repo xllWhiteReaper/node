@@ -27,7 +27,15 @@ const UserSchema = new Schema(
       required: [true, "Password is required"],
     },
     date: String,
-    games: GameSchema,
+    games: {
+      type: GameSchema,
+      default: {
+        total: 0,
+        won: 0,
+        winRate: 0,
+        history: [],
+      },
+    },
   },
   { versionKey: false }
 );

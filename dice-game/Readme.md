@@ -31,12 +31,6 @@ git checkout develop
 cd dice-game
 ```
 
-3. Navigate to the project directory:
-
-```
-cd dice-game
-```
-
 4. Install the dependencies:
 
 ```

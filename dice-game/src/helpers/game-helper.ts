@@ -100,18 +100,15 @@ export class GameHelper {
 
   async deleteGame(gameId: string) {
     const user = await User.findById({ _id: this._id });
-    console.log("FOUND USER");
 
     if (user) {
-      const game = user.games.history.find((userGame) => {
-        console.log(`game id: ${gameId}, current id: ${userGame._id}`);
-        return userGame._id === gameId;
-      });
+      const game = user.games.history.find(
+        (userGame) => `${userGame._id}` === gameId
+      );
 
       if (!game) {
         throw new NotFoundException(`Game with id: ${gameId} not found`);
       }
-      console.log("FOUND GAME");
 
       user.games.history = user.games.history.filter(
         (userGame) => userGame._id !== game._id

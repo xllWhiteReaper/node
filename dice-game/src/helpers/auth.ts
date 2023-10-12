@@ -37,6 +37,7 @@ export class Auth {
     console.log("Registering");
     return jwt;
   }
+
   async login() {
     const userDB = await User.findOne({ email: this.email });
     const isPasswordValid = User.comparePassword(

@@ -41,15 +41,29 @@ export const register = async (req: Request, res: Response) => {
   }
 };
 
-export const login = (req: Request, res: Response) => {
+export const login = async (req: Request, res: Response) => {
   try {
+    const { email, password } = req.body;
+    const userAuthentication = new Auth(email, password);
+    const jwt = await userAuthentication.login();
+    const resp: CustomResponse = {
+      success: true,
+      msg: "Login Successful",
+      data: {
+        success: true,
+        email,
+        jwt,
+      },
+    };
+
+    res.status(201).json(resp);
   } catch (error) {
     if (error instanceof WrongCredentialsException) {
       const errorResponse: CustomResponse = {
         msg: error.message,
         success: false,
       };
-      return res.status(403).json(errorResponse);
+      return res.status(401).json(errorResponse);
     }
   }
 };

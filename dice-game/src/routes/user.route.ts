@@ -5,12 +5,13 @@ import {
   getUserById,
   updateUser,
 } from "../controllers/user.controller";
+import { validateToken } from "../middlewares/validate-jwt";
 
 const router = Router();
 
-router.get("/", getAllUsers);
-router.get("/:id", getUserById);
-router.put("/update/:id", updateUser);
-router.delete("/delete", deleteUser);
+router.get("/", validateToken, getAllUsers);
+router.get("/:id", validateToken, getUserById);
+router.put("/update/:id", validateToken, updateUser);
+router.delete("/delete", validateToken, deleteUser);
 
 export default router;

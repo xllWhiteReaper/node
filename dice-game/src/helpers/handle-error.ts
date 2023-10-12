@@ -4,8 +4,11 @@ import { NotFoundException } from "../models/errors/not-found-exception";
 import { statusMap } from "../utils/status.map";
 import { Response } from "express";
 
-export const handleError = (error: Error, res: Response) => {
-  let status: number = 500;
+export const handleError = (
+  error: Error,
+  res: Response,
+  status: number = 500
+) => {
   if (error instanceof NotFoundException) {
     status = 404;
   } else if (error instanceof BadRequestException) {

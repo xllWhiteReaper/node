@@ -43,7 +43,7 @@ async function connectCollection() {
 }
 
 function useRoutes() {
-  app.get("/api/get-notes", async (req, res) => {
+  app.get("/api/notes", async (req, res) => {
     const notes = await collection
       .find({}, { projection: { _id: 0 } })
       .toArray();
@@ -59,9 +59,29 @@ function useRoutes() {
       });
     }
 
-    const numberOfDocs = await collection.count({});
+    const databaseMaxIdInformation = await collection
+      .aggregate([
+        {
+          $group: {
+            _id: null,
+            maxId: { $max: "$id" },
+          },
+        },
+      ])
+      .toArray();
+    const highestIdInDatabase =
+      databaseMaxIdInformation.length === 0
+        ? 0
+        : parseInt(databaseMaxIdInformation[0].maxId);
+
+    if (isNaN(highestIdInDatabase)) {
+      return res.status(500).json({
+        error: "The note could not be created, please try again later",
+      });
+    }
+
     const insertedUser = await collection.insertOne({
-      id: `${numberOfDocs + 1}`,
+      id: `${highestIdInDatabase + 1}`,
       description,
     });
 
@@ -73,11 +93,25 @@ function useRoutes() {
           error: "The note could not be created, please try again later",
         });
   });
+
+  app.delete("/api/notes/:id", async (req, res) => {
+    const id = req.params.id;
+
+    if (!id) {
+      return res.status(400).json({
+        error: "The id is required as a param",
+      });
+    }
+
+    try {
+      await collection.deleteOne({ id });
+    } catch (error) {
+      return res.status(500).json({
+        error: "Error deleting the note",
+      });
+    }
+    return res.status(204).send();
+  });
 }
 
 startApp();
-
-// await database.collection("todos").insertMany([
-//   { id: "1", description: "study programming" },
-//   { id: "2", description: "apply for scholarships" },
-// ]);

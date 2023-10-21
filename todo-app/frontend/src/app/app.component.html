@@ -1,0 +1,7 @@
+<h2>To do App</h2>
+
+<div *ngIf="notes$ | async as notes">
+  <h3 *ngFor="let note of notes">
+    {{ note.description }}
+  </h3>
+</div>

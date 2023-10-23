@@ -1,7 +1,12 @@
 <h2>To do App</h2>
+<input type="text" #addNoteInput [placeholder]="notePlaceholder" />
+<button (click)="onAddNote()">Add Note</button>
 
 <div *ngIf="notes$ | async as notes">
-  <h3 *ngFor="let note of notes">
-    {{ note.description }}
-  </h3>
+  <div *ngFor="let note of notes">
+    <h3>
+      {{ note.description }}
+    </h3>
+    <button (click)="onDeleteNote(note.id)">Delete Note</button>
+  </div>
 </div>

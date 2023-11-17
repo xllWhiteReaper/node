@@ -5,57 +5,84 @@ This is a Node.js application built with TypeScript that serves as an API for a 
 ## Table of Contents
 
 - [Installation](#installation)
+- [Screenshots](#screenshots)
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)
 - [Configuration](#configuration)
 - [Contributing](#contributing)
 - [License](#license)
 
+## Requirements
+
+To run the application, please ensure that you have the following prerequisites in place:
+
+1. **MongoDB Database**: Create a MongoDB database where the application will store and retrieve data. If you don't have MongoDB installed, you can download it from the official MongoDB website and follow the installation instructions.
+
+2. **Environment Variables**: Create the .env file in the project directory and fill it with the necessary [configuration](#configuration) values. Specifically, you'll need to provide the connection details for your MongoDB database and a JWT Secret key.
+
+Note: It's important to keep the `.env` file secure and not share it publicly, as it may contain sensitive information such as database credentials.
+
+## Screenshots
+
+Retrieve all users
+
+<img src="./assets/users_retrieval.JPG" width="650px;">
+
+User rolled the dices
+
+<img src="./assets/user_rolls_dices.JPG" width="650px;">
+
 ## Installation
 
 1. Clone the repository:
 
-```
-git clone https://github.com/xllWhiteReaper/node/tree/develop
-```
+   ```
+   git clone https://github.com/xllWhiteReaper/node
+   ```
 
-2. Switch branches:
+2. Change directories and enter the clone folder by using the following command:
 
-```
-git checkout develop
-```
+   ```
+   cd node
+   ```
 
-3. Navigate to the project directory:
+3. Switch branches to the develop branch by using the following command:
 
-```
-cd dice-game
-```
+   ```
+   git checkout develop
+   ```
 
-4. Install the dependencies:
+4. Navigate to the project directory:
 
-```
-npm i
-```
+   ```
+   cd dice-game
+   ```
 
-5. Create a .env file in the root level
+5. Install the dependencies:
 
-6. Fill the necessary environment files found in the [configuration subfield](#configuration)
+   ```
+   npm i
+   ```
 
-7. Compile Typescript files to JavaScript:
+6. Create a .env file in the root level
 
-```
-tsc
-```
+7. Fill the necessary environment files found in the [configuration subfield](#configuration)
 
-6. Explore the JavaScript files in the dist folder
+8. Compile Typescript files to JavaScript:
 
-7. Run the following command to start the application:
+   ```
+   tsc
+   ```
 
-```
-npm run start
-```
+9. Explore the JavaScript files in the dist folder
 
-The API should run on the port you provided in your .env file or the port 3500
+10. Run the following command to start the application:
+
+    ```
+    npm run start
+    ```
+
+11. The API should run on the port you provided in your .env file or the port 3500
 
 ## Usage
 
